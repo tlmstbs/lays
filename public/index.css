@@ -1,0 +1,25 @@
+.todo {
+    margin-bottom: 1rem;
+}
+
+.todo span.completed {
+    text-decoration: line-through;
+}
+
+.todo label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+     cursor: pointer;
+     background: #e1cdeb;
+}
+
+.todo i {
+z-index: 2;
+}
+
+
+.btn-save {
+    background-color: #b39ddb;
+}
