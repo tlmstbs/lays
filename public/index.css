@@ -1,29 +1,21 @@
 .todo {
     margin-bottom: 1rem;
+    color: aliceblue;
 }
 
 .todo span.completed {
     text-decoration: line-through;
 }
 
-.todo label {
-    width: 100%;
-    display: flex;
-    align-items: center;
-     justify-content: space-between;
-     cursor: pointer;
-     background: #e1cdeb;
-     color: black;
+span {
+    color:#b39ddb;
+    font-size: 20px;
+    font-weight: 600;
 }
-
 .todo i {
 z-index: 2;
 }
 
-
-.btn-save {
-    background-color: #b39ddb;
-}
 
 .brand-logo{
     margin-left: 20px;
@@ -36,4 +28,10 @@ h2 {
     font-family: Blippo, fantasy;
     color: #b39ddb;
     font-weight: 400;
+}
+
+.cont-todo {
+    border-radius: 16px;
+    background-color: #b39ddb15;
+    padding: 15px;
 }

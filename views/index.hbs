@@ -1,16 +1,19 @@
 <h2>Todos page</h2>
-
+<div class="cont-todo">
 {{#if todos.length}}
   <ul>
     {{#each todos}}
-      <li class="todo">
+      
+        <li class="todo">
         <label>
           <input type="checkbox" class="todo-checkbox" data-id="{{_id}}" {{#if completed}}checked{{/if}} />
           <span class="{{#if completed}}completed{{/if}}">{{title}}</span>
         </label>
       </li>
+      
     {{/each}}
   </ul>
+</div>
 {{else}}
   <p>No todos!</p>
 {{/if}}
