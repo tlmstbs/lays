@@ -13,6 +13,7 @@
      justify-content: space-between;
      cursor: pointer;
      background: #e1cdeb;
+     color: black;
 }
 
 .todo i {
@@ -22,4 +23,17 @@ z-index: 2;
 
 .btn-save {
     background-color: #b39ddb;
+}
+
+.brand-logo{
+    margin-left: 20px;
+}
+
+h2 {
+    font-size: 3.56rem;
+    line-height: 110%;
+    margin: 2.3733333333rem 0 1.424rem 0;
+    font-family: Blippo, fantasy;
+    color: #b39ddb;
+    font-weight: 400;
 }
