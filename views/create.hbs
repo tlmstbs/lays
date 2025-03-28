@@ -1,11 +1,31 @@
-<form action="/create" method="POST">
-<h2>Create todo</h2>
+<form id="createForm" action="/create" method="POST">
+  <h2>Create todo</h2>
 
-<div class="input-field">
-<input type="text" name="title" placeholder="todo title">
-{{!-- <label>Todo title</label> --}}
-</div>
+  <div class="input-field">
+    <input type="text" name="title" placeholder="todo title">
+  </div>
 
-<button type="submit" class="btn">Create</button>
+  <button type="submit" class="btn">Create</button>
 </form>
 
+<script>
+  $(document).ready(function() {
+    $('#createForm').submit(function(e) {
+      e.preventDefault(); 
+
+      const titleValue = $('input[name="title"]').val();
+
+      $.ajax({
+        url: '/create',
+        type: 'POST',
+        data: { title: titleValue },
+        success: function(response) {
+          window.location.href = '/';
+        },
+        error: function(err) {
+          alert('Ошибка при создании задачи: ' + err.responseText);
+        }
+      });
+    });
+  });
+</script>

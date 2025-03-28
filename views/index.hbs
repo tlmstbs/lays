@@ -4,26 +4,41 @@
   <ul>
     {{#each todos}}
       <li class="todo">
-        <form action="/complete" method="POST">
-          <label>
-            {{#if completed}}
-              <input type="checkbox" checked name="completed" />
-              <span class="completed">{{title}}</span>
-            {{else}}
-              <input type="checkbox" name="completed" />
-              <span>{{title}}</span>
-            {{/if}}
-
-            <input type="hidden" value="{{_id}}" name="id" />
-
-            <button class="btn btn-small deep-purple lighten-3" type="submit">
-              <i class="material-icons">save</i>
-            </button>
-          </label>
-        </form>
+        <label>
+          <input type="checkbox" class="todo-checkbox" data-id="{{_id}}" {{#if completed}}checked{{/if}} />
+          <span class="{{#if completed}}completed{{/if}}">{{title}}</span>
+        </label>
       </li>
     {{/each}}
   </ul>
 {{else}}
   <p>No todos!</p>
 {{/if}}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".todo-checkbox").forEach(checkbox => {
+      checkbox.addEventListener("change", async function () {
+        const todoId = this.getAttribute("data-id");
+        const completed = this.checked ? 1 : 0;
+
+        try {
+          const response = await fetch("/toggle-status", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id: todoId, completed })
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to update status");
+          }
+        } catch (error) {
+          console.error("Error updating todo status:", error);
+          this.checked = !this.checked;
+        }
+      });
+    });
+  });
+</script>

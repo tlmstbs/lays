@@ -1,4 +1,3 @@
-// routes/todos.js
 const { Router } = require('express');
 const Todo = require('../models/todo');
 const router = Router();
@@ -41,24 +40,16 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.post('/complete', async (req, res) => {
+
+router.post('/toggle-status', async (req, res) => {
   try {
-    const completed = !!req.body.completed;
-    await Todo.updateStatus(req.db, req.body.id, completed ? 1 : 0);
-    res.redirect('/');
+    const { id, completed } = req.body;
+    await Todo.updateStatus(req.db, id, completed);
+    res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server error');
+    res.status(500).json({ success: false, error: "Server error" });
   }
 });
-
-router.post('/complete', async (req, res) =>{
-  const todo= await Todo.findById(req.body.id)
-
-  todo.completed=!!req.body.completed
-  await todo.save()
-
-  res.redirect('/')
-})
 
 module.exports = router;
