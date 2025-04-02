@@ -2,6 +2,7 @@
   "name": "lays",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index",
     "dev": "nodemon index"
@@ -11,9 +12,14 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
+    "express-fileupload": "^1.5.1",
     "express-handlebars": "^8.0.1",
+    "fs-extra": "^11.3.0",
     "mysql2": "^3.14.0",
-    "sqlite3": "^5.1.7"
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "sqlite3": "^5.1.7",
+    "urlencode": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

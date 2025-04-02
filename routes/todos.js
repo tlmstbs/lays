@@ -1,6 +1,9 @@
-const { Router } = require('express');
-const Todo = require('../models/todo');
+// const { Router } = require('express');
+import { Router } from 'express';
+// const Todo = require('./models/todo.js');
 const router = Router();
+
+import  '/lays/models/todo.js'
 
 router.get('/', async (req, res) => {
   try {
