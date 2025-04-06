@@ -1,0 +1,44 @@
+<h2>Вход в систему</h2>
+
+<form id="authForm" action="/auth" method="POST">
+  <div class="input-field">
+    <input type="text" name="username" placeholder="Имя пользователя" required />
+  </div>
+
+  <div class="input-field">
+    <input type="password" name="password" placeholder="Пароль" required />
+  </div>
+
+  <button type="submit" class="btn">Войти</button>
+  <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+
+</form>
+
+<script>
+  document.getElementById('authForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {
+      username: formData.get('username'),
+      password: formData.get('password')
+    };
+
+    try {
+      const res = await fetch('/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      if (result.status === 'ok') {
+        window.location.href = '/';
+      } else {
+        alert(result.message || 'Ошибка входа');
+      }
+    } catch (err) {
+      alert('Сервер недоступен');
+    }
+  });
+</script>

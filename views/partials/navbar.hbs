@@ -29,6 +29,15 @@
           </a>
         </li>
       {{/if}}
+
+      {{#if isAuthenticated}} 
+        <li>
+          <a href="/logout">
+            <i class="material-icons">exit_to_app</i>
+          </a>
+        </li>
+      {{/if}}
     </ul>
   </div>
 </nav>
+
